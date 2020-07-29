@@ -32,8 +32,6 @@ var originalFlavors = [
   "Vanilla Burnt Almond",
 ];
 
-const ogFlavorsArr = [...originalFlavors];
-
 /* Task 1: Confirm that the array is exactly 31 flavors. Your function should accept:
 
 (1) an array 
@@ -179,21 +177,15 @@ and should return a new array that is identical to the old array. You can name t
 function copy(ogFlavors, currentFlavors) {
   /*code here*/
   // Declare the array to return
-  let ogFlavorsArr = currentFlavors;
-
-  ogFlavorsArr.splice(0, ogFlavorsArr.length);
-
-  for (let i = 0; i < ogFlavors.length; i++) {
-    ogFlavorsArr.push(ogFlavors[i]);
-  }
+  ogFlavors = [...currentFlavors];
 
   // Return the OG flavors array
-  return ogFlavorsArr;
+  return ogFlavors;
 }
 
 console.log(
   "Going back to the very Original flavors list from the initial array",
-  copy(ogFlavorsArr, originalFlavors)
+  copy("ogFlavorsArr", originalFlavors)
 );
 
 /* Task 7: July 7th is "World Chocolate Day" and Baskin Robins wants to create promotional materials highlighting all of their chocolate flavors. Write a function that checks every item in the array for a given string and returns a new array called filteredArray with just these values. Rather than hardcoding "chocolate" into your function, pass a string as a parameter, and invoke with the argument "chocolate". This way you could also filter for "Vanilla", "Sherbert", etc. when those holidays roll around.
