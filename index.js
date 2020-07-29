@@ -235,9 +235,26 @@ and should return the average number of words per item in the array.
 
 For example, getAverageWordLength(originalFlavors) should return a number between 0 and 3. */
 
-function getAverageWordLength(/*code here*/) {
+function getAverageWordLength(array) {
   /*code here*/
+  // Declare variable to return
+  let averageWordLength;
+  let wordsLengthAll = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    wordsLengthAll += array[i].split(" ").length;
+  }
+
+  averageWordLength = wordsLengthAll / array.length;
+
+  // Return variable
+  return averageWordLength;
 }
+
+console.log(
+  "The word length average from the array 'originalFlavors' is: ",
+  getAverageWordLength(originalFlavors)
+);
 
 /* STRETCH 2: Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors from originalFlavors, currentFlavors, seasonalFlavors, and regionalFlavors.
 
@@ -326,6 +343,36 @@ var regionalFlavors = [
   "Caramel 'n' Cookies",
 ];
 
-function getRandomFlavors(/*code here*/) {
+function getRandomFlavors(array1, array2, array3, array4) {
   /*code here*/
+  // Declare variable of new array
+  let randomArrayGen = [];
+
+  // Declare the random generators and specify the limit for the random array gen
+  const randomArray = Math.floor(Math.random() * 4) + 1;
+  let randomItem;
+
+  // Do a loop for 31 iterations to push to an array for 31 items
+  for (let i = 0; i < 31; i++) {
+    if (randomArray === 1) {
+      randomItem = Math.floor(Math.random() * array1.length - 1) + 1;
+      randomArrayGen.push(array1[randomItem]);
+    } else if (randomArray === 2) {
+      randomItem = Math.floor(Math.random() * array2.length - 1) + 1;
+      randomArrayGen.push(array2[randomItem]);
+    } else if (randomArray === 3) {
+      randomItem = Math.floor(Math.random() * array3.length - 1) + 1;
+      randomArrayGen.push(array3[randomItem]);
+    } else if (randomArray === 4) {
+      randomItem = Math.floor(Math.random() * array4.length - 1) + 1;
+      randomArrayGen.push(array4[randomItem]);
+    }
+  }
+
+  return randomArrayGen;
 }
+
+console.log(
+  "Randomly generate array from 4 different arrays",
+  getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors)
+);
