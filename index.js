@@ -32,6 +32,8 @@ var originalFlavors = [
   "Vanilla Burnt Almond",
 ];
 
+const ogFlavorsArr = [...originalFlavors];
+
 /* Task 1: Confirm that the array is exactly 31 flavors. Your function should accept:
 
 (1) an array 
@@ -147,9 +149,25 @@ Hint: You can use .splice() for this
 
 */
 
-function removeFlavorByName(/*code here*/) {
+function removeFlavorByName(flavors, removeFlavor) {
   /*code here*/
+  // Declare the variable to return
+  let newFlavorArr = flavors;
+
+  for (let i = 0; i < flavors.length; i++) {
+    if (flavors[i] === removeFlavor) {
+      newFlavorArr.splice(i, 1);
+    }
+  }
+
+  // Return the new Array
+  return newFlavorArr;
 }
+
+console.log(
+  "Removing the flavor 'Strawberry' from the Original Flavors array BY NAME: ",
+  removeFlavorByName(originalFlavors, "Strawberry")
+);
 
 /* Task 6: With all of these changes going on, we don't want to lose track of the actual, original 31 flavors. Write a function called copy that makes a copy of the array. 
 
@@ -158,10 +176,21 @@ Your function should accept:
 2 arguments 1 for your new array and one for your original array
 
 and should return a new array that is identical to the old array. You can name the new array however you'd like. */
-
-function copy(/*code here*/) {
+function copy(ogFlavors, currentFlavors) {
   /*code here*/
+  // Declare the array to return
+  let ogFlavorsArr = currentFlavors;
+
+  ogFlavorsArr = ogFlavors;
+
+  // Return the OG flavors array
+  return ogFlavorsArr;
 }
+
+console.log(
+  "Going back to the very Original flavors list from the initial array",
+  copy(ogFlavorsArr, originalFlavors)
+);
 
 /* Task 7: July 7th is "World Chocolate Day" and Baskin Robins wants to create promotional materials highlighting all of their chocolate flavors. Write a function that checks every item in the array for a given string and returns a new array called filteredArray with just these values. Rather than hardcoding "chocolate" into your function, pass a string as a parameter, and invoke with the argument "chocolate". This way you could also filter for "Vanilla", "Sherbert", etc. when those holidays roll around.
 
@@ -178,9 +207,25 @@ DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem.
 
 hint - you can use the .includes method to help you solve this */
 
-function filterByWord(/*code here*/) {
+function filterByWord(flavors, flavorPromo) {
   /*code here*/
+  // Declare the variable to return
+  let flavorsToPromote = [];
+
+  for (let i = 0; i < flavors.length; i++) {
+    if (flavors[i].includes(flavorPromo)) {
+      flavorsToPromote.push(flavors[i]);
+    }
+  }
+
+  // Return the flavors we are promoting
+  return flavorsToPromote;
 }
+
+console.log(
+  "We are promoting only 'Chocolates' today. The array has the following choco flavors: ",
+  filterByWord(originalFlavors, "Chocolate")
+);
 
 /* 🧁🍦🍨 STRETCH 🍨🍦🍫*/
 
