@@ -85,7 +85,7 @@ function addFlavor(newFlavor, flavors) {
 }
 
 console.log(
-  "Original Flavors array with a new flavor 'Rainbow Sherber' added: ",
+  "Original Flavors array with a new flavor 'Rainbow Sherbert' added: ",
   addFlavor("Rainbow Sherbert", originalFlavors)
 );
 
@@ -181,7 +181,11 @@ function copy(ogFlavors, currentFlavors) {
   // Declare the array to return
   let ogFlavorsArr = currentFlavors;
 
-  ogFlavorsArr = ogFlavors;
+  ogFlavorsArr.splice(0, ogFlavorsArr.length);
+
+  for (let i = 0; i < ogFlavors.length; i++) {
+    ogFlavorsArr.push(ogFlavors[i]);
+  }
 
   // Return the OG flavors array
   return ogFlavorsArr;
